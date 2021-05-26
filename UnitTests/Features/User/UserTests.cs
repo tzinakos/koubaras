@@ -40,9 +40,9 @@ namespace UnitTests.Features.User
         [Test]
         public void Given_A_Delete_Request_for_A_User_When_the_request_Is_Handled_Then_The_User_is_Deleted()
         {
-            var userId = UserHandler.Create(CreateUser()).ConfigureAwait(false).GetAwaiter().GetResult().Id;
+            var userId = UserHandler.Create(CreateUser()).GetAwaiter().GetResult().Id;
 
-            UserHandler.Delete(userId).ConfigureAwait(false);
+            UserHandler.Delete(userId).GetAwaiter().GetResult();
 
             Assert.That(Db.Users.Count(), Is.EqualTo(0));
         }
