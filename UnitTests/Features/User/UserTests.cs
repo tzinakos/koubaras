@@ -44,7 +44,7 @@ namespace UnitTests.Features.User
 
             UserHandler.Delete(userId).GetAwaiter().GetResult();
 
-            Assert.That(Db.Users.Count(), Is.EqualTo(0));
+            Assert.That(Db.Users.Count(user=> user.Id == userId), Is.EqualTo(0));
         }
 
         [Category("GetSingleUser")]
